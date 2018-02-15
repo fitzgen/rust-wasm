@@ -13,6 +13,7 @@ small [book]; please take a look and contribute!
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
+- [Vision](#vision)
 - [Status](#status)
   - [The Rust compiler](#the-rust-compiler)
   - [The Rust standard library](#the-rust-standard-library)
@@ -25,6 +26,42 @@ small [book]; please take a look and contribute!
   - [Building the book](#building-the-book)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Vision
+
+**Compiling Rust to WebAssembly is *the* best choice for fast code for the
+Web.**
+
+JavaScript Web applications struggle to reliably hit 60 fps. JavaScript's
+dynamic type system and garbage collection pauses don't help. Modern JITs do
+what they can, but are still unreliable. Seemingly small code changes can result
+in drastic performance regressions if you accidentally wander off the JIT's
+happy path.
+
+Rust — with its low-level control and reliable, GC-pause-free performance — does
+not suffer those problems. The introduction of WebAssembly, and `rustc`'s
+ability to emit it, brings Rust to the Web.
+
+The time to make this happen is *now*.
+
+Unlike many of the spaces that Rust is competing in, WebAssembly is new, and
+there aren't any incumbents. We have the opportunity to dominate the space, and
+get all the new users, contributors, job postings, funding, impact, and
+ecosystem growth that entails.
+
+WebAssembly doesn't provide any garbage collection, so any garbage collected
+language targeting WebAssembly needs to bring its own runtime and
+collector. Rust doesn't have that issue, and so Rust's `.wasm` binaries are
+*much* smaller than collected languages'. But WebAssembly will likely gain
+support for garbage collection in 2019. Garbage collection brings unreliability
+to performance and lengthens tail latencies, so Rust will always have an
+advantage here, but our *double* advantage has an end date. We need to leverage
+our `.wasm` binary size advantage now, and dominate the compiling-to-WebAssembly
+market sooner rather than later.
+
+See also [Rust and the case for WebAssembly in 2018.][case-for-wasm]
+
+[case-for-wasm]: https://mgattozzi.com/rust-wasm
 
 # Status
 
